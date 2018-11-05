@@ -12,6 +12,23 @@ shooter.addTarget = () => {
   target.style.top = `${Math.random() * 100}%`
   target.style.left = `${Math.random() * 100}%`
   shooter.targets.appendChild(target)
+
+  target.addEventListener('mouseenter', () => {
+    shooter.shootTarget(target)
+  })
 }
+
+shooter.shootTarget = (_target) => {
+  //Delete Target
+  _target.remove()
+
+  //Add new target
+  shooter.addTarget()
+
+  //Increment score
+  shooter.score++
+  shooter.score.textContent = shooter.score
+}
+
 
 shooter.addTarget()
